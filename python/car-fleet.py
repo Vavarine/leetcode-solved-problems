@@ -1,8 +1,15 @@
 from typing import List
 
+"""
+  The trick is to create an list with each item being the cars position and speed ordering by position,
+  then iterating through the itens calculate the time needed to finish the course, 
+  putting the first time in a stack, if the subsequent time is slower then the top car on the stack,
+  we are garante to have another car fleet, this means we have to put it in the stack too.
+  The return becomes the size of the stack.
+"""
 def carFleet(target: int, position: List[int], speed: List[int]) -> int:
   # this is a List Comprehension in Python3, a shorter way to create a list with pre existent lists
-  cars =[[p, s] for p, s in zip(position, speed)]
+  cars = [[p, s] for p, s in zip(position, speed)]
   stack = [] # [position, speed]
   
   for p, s in sorted(cars)[::-1]: # [::-1] reverses the array without modifying
